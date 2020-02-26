@@ -1,4 +1,4 @@
- # CELL
+# CELL
 extends Control
 
 	# living or dead
@@ -17,7 +17,7 @@ func set_type(type):
 	tile_type = type
 	# 0 is living 1 is dead
 	if tile_type == 0:
-		anim.play("Living")
+		anim.play("Lving")
 	else:
 		anim.play("Dead")
 

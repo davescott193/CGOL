@@ -12,13 +12,12 @@ var spacer = 5              # distance between cells
 
 var start_position	# position to start the grid
 var step_timer	# time between each step
-
 var cell = preload("res://scenes/cell.tscn")
 
 func _ready():
 	start_position = get_node("StartPosition")
 	step_timer = get_node("StepTimer")
- 
+	
 func initialize_grid():
 	for y in height:
 		for x in width:
@@ -26,19 +25,17 @@ func initialize_grid():
 			new_cell.initialize_tile(x,y)
 			new_cell.rect_position = (Vector2(start_position.position.x + x*(cell_size+spacer), start_position.position.y + y*(cell_size+spacer)))
 			add_child(new_cell)
-			grid[Vector2(x,y)] = new_cell  
-
+			grid[Vector2(x,y)] = new_cell
 func randomize_grid():
-	for y in height:
-		for x in width:
-			var cell = grid[Vector2(x,y)]
-			if rand_range(1,101) <= spawn_rate:
-				cell.set_type(0)
-			else:
-				cell.set_type(1)
-
-	randomize()
-	start_position = get_node("StartPosition")
-	step_timer = get_node("StepTimer")
-	initialize_grid()
-	randomize_grid()
+		for y in height:
+			for x in width:
+				var cell = grid[Vector2(x,y)]
+				if rand_range(1,101) <= spawn_rate:
+					cell.set_type(0)
+				else:
+					cell.set_type(1)
+		randomize()
+		start_position = get_node("StartPosition")
+		step_timer = get_node("StepTimer")
+		initialize_grid()
+		randomize_grid()
